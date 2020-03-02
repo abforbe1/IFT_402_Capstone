@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EV Information Database</title>
+        <link rel="icon" href="assets/images/logo-icon.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body >
+		<nav class="navbar navbar-expand-md navbar-dark">
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <a class="navbar-brand" href="index.html">EV Information Database</a>
+		  <div class="collapse navbar-collapse" id="navbar1">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link" href="index.html">Search</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">EV News</a>
+			  </li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Create Account</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="#">Sign In</a>
+			  </li>
+			</ul>
+		  </div>
+		</nav>
+		
+		<div id="results-container">
+			<div class="row">
+				<div id="edit-search" class="col-3">
+					<form>
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary form-control">Edit Search</button>
+						</div>
+						<div class="form-group">
+							<span>Price</span>
+							<div class="input-group">
+								<label for="from" style="margin:5px;">From:</label>
+								<div class="input-group-prepend">
+									<span class="input-group-text">$</span>
+								</div>
+								<input type="text" id="from" class="form-control">
+							</div>
+							<div class="input-group">
+								<label for="to" style="margin:5px;">To:</label>
+								<div class="input-group-prepend">
+									<span class="input-group-text">$</span>
+								</div>
+								<input type="text" id="to" class="form-control">
+							</div>
+						</div>
+						<div class="form-group">
+							<span>Range</span>
+							<div class="input-group">
+								<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+								<div class="input-group-append">
+									<span class="input-group-text">mi</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<span>Make</span>
+							<select class="form-control">
+								<option selected>Any Make</option>
+								<option>BMW</option>
+								<option>Chevrolet</option>
+								<option>Ford</option>
+								<option>Honda</option>
+								<option>Hyundai</option>
+								<option>Nissan</option>
+								<option>Tesla</option>
+								<option>Toyota</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<span>Model</span>
+							<select class="form-control">
+								<option selected>Any Model</option>
+								<option>i3</option>
+								<option>Bolt</option>
+								<option>Mustang Mach-E</option>
+								<option>Clarity</option>
+								<option>Kona</option>
+								<option>Ioniq</option>
+								<option>Leaf</option>
+								<option>Model 3</option>
+							</select>
+						</div>
+					</form>
+				</div>
+				<div id="results" class="col-7">
+					<div class="row car-result">
+						<div class="car-thumb col-5" style="background-image: url()">Car Thumbnail</div>
+						<div class="col-3">
+							Make<br>
+							Model<br>
+							Year<br>
+							⭐⭐⭐⭐<br>
+							<a href="#">read user reviews</a>
+						</div>
+						<div class="col-3">
+							MSRP: $$,$$$<br>
+							Range: 999 mi<br>
+							Availability: 
+						</div>
+					</div>
+					<div class="row car-result">
+						<div class="car-thumb col-5" style="background-image: url()">Car Thumbnail</div>
+						<div class="col-3">
+							Make<br>
+							Model<br>
+							Year<br>
+							⭐⭐⭐⭐<br>
+							<a href="#">read user reviews</a>
+						</div>
+						<div class="col-3">
+							MSRP: $$,$$$<br>
+							Range: 999 mi<br>
+							Availability: 
+						</div>
+					</div>
+					<div class="row car-result">
+						<div class="car-thumb col-5" style="background-image: url()">Car Thumbnail</div>
+						<div class="col-3">
+							Make<br>
+							Model<br>
+							Year<br>
+							⭐⭐⭐⭐<br>
+							<a href="#">read user reviews</a>
+						</div>
+						<div class="col-3">
+							MSRP: $$,$$$<br>
+							Range: 999 mi<br>
+							Availability: 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+    </body>
+</html>
