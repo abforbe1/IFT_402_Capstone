@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>EV Information Database</title>
-        <link rel="icon" href="assets/images/logo-icon.png">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+        <title>Electric Driver</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">
+		<!--React-->
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
         <!--Bootstrap-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+		<!--JQuery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<!--CSS-->
         <link rel="stylesheet" href="main.css">
     </head>
     <body >
@@ -14,7 +20,7 @@
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
 			<span class="navbar-toggler-icon"></span>
 		  </button>
-		  <a class="navbar-brand" href="index.html">EV Information Database</a>
+		  <a class="navbar-brand" href="index.html">ElectricDriver.net</a>
 		  <div class="collapse navbar-collapse" id="navbar1">
 			<ul class="navbar-nav">
 			  <li class="nav-item">
@@ -38,31 +44,35 @@
 		<div id="results-container">
 			<div class="row">
 				<div id="edit-search" class="col-3">
-					<form>
 						<div class="form-group">
-							<button type="submit" class="btn btn-primary form-control">Edit Search</button>
+							<button id="filter" class="btn btn-primary form-control">
+								Filter Search
+							</button>
 						</div>
 						<div class="form-group">
 							<span>Price</span>
 							<div class="input-group">
-								<label for="from" style="margin:5px;">From:</label>
+								<label style="margin:5px;">From:</label>
 								<div class="input-group-prepend">
 									<span class="input-group-text">$</span>
 								</div>
-								<input type="text" id="from" class="form-control">
+								<input type="text" id="min-price" class="form-control" value="0">
 							</div>
 							<div class="input-group">
-								<label for="to" style="margin:5px;">To:</label>
+								<label style="margin:5px;">To:</label>
 								<div class="input-group-prepend">
 									<span class="input-group-text">$</span>
 								</div>
-								<input type="text" id="to" class="form-control">
+								<input type="text" id="max-price" class="form-control" value="100000">
 							</div>
 						</div>
 						<div class="form-group">
 							<span>Range</span>
 							<div class="input-group">
-								<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+								<div class="input-group-append">
+									<span class="input-group-text">no less than</span>
+								</div>
+								<input id="set-range" type="text" class="form-control" value="0">
 								<div class="input-group-append">
 									<span class="input-group-text">mi</span>
 								</div>
@@ -72,82 +82,131 @@
 							<span>Make</span>
 							<select class="form-control">
 								<option selected>Any Make</option>
-								<option>BMW</option>
-								<option>Chevrolet</option>
-								<option>Ford</option>
-								<option>Honda</option>
-								<option>Hyundai</option>
-								<option>Nissan</option>
-								<option>Tesla</option>
-								<option>Toyota</option>
+								<option disabled>BMW</option>
+								<option disabled>Chevrolet</option>
+								<option disabled>Ford</option>
+								<option disabled>Honda</option>
+								<option disabled>Hyundai</option>
+								<option disabled>Nissan</option>
+								<option disabled>Tesla</option>
+								<option disabled>Toyota</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<span>Model</span>
 							<select class="form-control">
 								<option selected>Any Model</option>
-								<option>i3</option>
-								<option>Bolt</option>
-								<option>Mustang Mach-E</option>
-								<option>Clarity</option>
-								<option>Kona</option>
-								<option>Ioniq</option>
-								<option>Leaf</option>
-								<option>Model 3</option>
+								<option disabled>i3</option>
+								<option disabled>Bolt</option>
+								<option disabled>Mustang Mach-E</option>
+								<option disabled>Clarity</option>
+								<option disabled>Kona</option>
+								<option disabled>Ioniq</option>
+								<option disabled>Leaf</option>
+								<option disabled>Model 3</option>
 							</select>
 						</div>
-					</form>
+						<button id="clear" class="btn btn-primary form-control">Clear Filter</button>
 				</div>
-				<div id="results" class="col-7">
-					<div class="row car-result">
-						<div class="car-thumb col-5" style="background-image: url()">Car Thumbnail</div>
-						<div class="col-3">
-							Make<br>
-							Model<br>
-							Year<br>
-							⭐⭐⭐⭐<br>
-							<a href="#">read user reviews</a>
-						</div>
-						<div class="col-3">
-							MSRP: $$,$$$<br>
-							Range: 999 mi<br>
-							Availability: 
-						</div>
-					</div>
-					<div class="row car-result">
-						<div class="car-thumb col-5" style="background-image: url()">Car Thumbnail</div>
-						<div class="col-3">
-							Make<br>
-							Model<br>
-							Year<br>
-							⭐⭐⭐⭐<br>
-							<a href="#">read user reviews</a>
-						</div>
-						<div class="col-3">
-							MSRP: $$,$$$<br>
-							Range: 999 mi<br>
-							Availability: 
-						</div>
-					</div>
-					<div class="row car-result">
-						<div class="car-thumb col-5" style="background-image: url()">Car Thumbnail</div>
-						<div class="col-3">
-							Make<br>
-							Model<br>
-							Year<br>
-							⭐⭐⭐⭐<br>
-							<a href="#">read user reviews</a>
-						</div>
-						<div class="col-3">
-							MSRP: $$,$$$<br>
-							Range: 999 mi<br>
-							Availability: 
-						</div>
-					</div>
-				</div>
+				<div id="results" class="col-7"></div>
 			</div>
 		</div>
 		
 		
     </body>
+	<script type="text/javascript">
+		//vehicle table of database
+			var vehiclesDB = [
+				[1,'i3',1,2020,'NULL',44450,6,153,'EV','Compact Sedan','RWD','i3.jpg',4.5,68],
+				[5,'Bolt',2,2020,'LT',37495,2,259,'EV','Compact Sedan','FWD','bolt.jpg',4.7,71],
+				[7,'Mustang Mach-E',3,2021,'Select',43895,6,230,'EV','Hatchback','RWD','mach-e.jpg',0,0],
+				[15,'Fusion PHEV',3,2020,'Titanium',35000,5,26,'PHEV','Sedan','FWD','fusion.jpg',0,0],
+				[16,'Clarity',4,2020,'Plug-in Hybrid',33400,6,89,'PHEV','Sedan','FWD','clarity.jpg',4.7,54],
+				[18,'Kona',5,2020,'SEL',37190,6,258,'EV','SUV','FWD','kona.jpg',4.5,73],
+				[21,'Ioniq PHEV',5,2020,'SE',26500,4,29,'PHEV','Compact Sedan','FWD','ioniq.jpg',4.4,68],
+				[24,'Ioniq Electric',5,2020,'SE',33045,6,170,'EV','Compact Sedan','FWD','ioniq.jpg',4.4,68],
+				[26,'Leaf',6,2020,'S',31600,6,149,'EV','Compact Sedan','FWD','leaf.jpg',4.4,64],
+				[31,'Model 3',7,2020,'Standard Range Plus',39990,1,250,'EV','Sedan','RWD','model3.jpg',4.7,65],
+				[34,'Model S',7,2020,'Long Range Plus',79990,1,390,'EV','Sedan','AWD','models.jpg',4.9,78],
+				[36,'Model X',7,2020,'Long Range Plus',84990,1,351,'EV','SUV','AWD','modelx.jpg',4.8,55],
+				[38,'Model Y',7,2020,'Long Range',52990,1,315,'EV','SUV','AWD','modely.jpg',0,0],
+				[40,'Cybertruck',7,2021,'Single Motor RWD',39990,1,250,'EV','Pickup','AWD','cybertruck.jpg',0,0],
+				[43,'Prius Prime',8,2020,'LE',27750,3,25,'PHEV','Sedan','FWD','priusprime.jpg',4.7,78],
+				[46,'Niro Plug-In Hybrid',9,2020,'LX',29545,4,26,'PHEV','SUV','FWD','nirophev.jpg',4.5,66],
+				[49,'Niro EV',9,2019,'EX',38500,6,239,'EV','SUV','FWD','niroev.jpg',0,0]
+			];
+			
+		function show_results(vehicles){
+			for(var i=0; i < vehicles.length;i++){
+				//extract info from DB
+				var thumbnail = "thumbnails/" + vehicles[i][11];
+				var year = vehicles[i][3];
+				var make = vehicles[i][2];
+				switch(make) {
+					//manufacturer table of database
+					case 1: make = "BMW"; break;
+					case 2: make = "Chevy"; break;
+					case 3: make = "Ford"; break;
+					case 4: make = "Honda"; break;
+					case 5: make = "Hyundai"; break;
+					case 6: make = "Nissan"; break;
+					case 7: make = "Tesla"; break;
+					case 8: make = "Toyota"; break;
+					case 9: make = "Kia";
+				}
+				var model = vehicles[i][1];
+				var tax = vehicles[i][6];
+				switch(tax) {
+					//Tax_Credit table of database
+					case 1: tax = 0; break;
+					case 2: tax = 1875; break;
+					case 3: tax = 4502; break;
+					case 4: tax = 4543; break;
+					case 5: tax = 4609; break;
+					case 6: tax = 7500; break;
+				}
+				var body = vehicles[i][9];
+				var drive = vehicles[i][10];
+				var type = vehicles[i][8];
+				var kbb = vehicles[i][12];
+				if (kbb == 0) {
+					kbb = "*";
+				}
+				var cr = vehicles[i][13];
+				var price = vehicles[i][5];
+				var range = vehicles[i][7];
+				
+				//insert info into html element
+				$("#results").append('<div class="row car-result"><div class="car-thumb" style="background-image: url(' + thumbnail +')"></div><div class="col-6"><span class="car-name"><span class="car-year">'+ year +'</span> '+ make +' <span class="car-model">'+ model +'</span></span><br><span class="car-price">Base Price: $'+ price +'</span><br><span class="car-tax">Federal Tax Credit: $'+ tax +'</span><br><span class="car-range">All-electric range: '+ range +'mi</span><br><span class="kbb">KBB Expert Rating: '+ kbb +'/5</span><br><span class="car-desc">'+ body +' | '+ drive +' | <span class="badge-'+ type +'">'+ type +'</span></span></div></div>');
+			};
+			$('#results').append('<p>&#8727;denotes vehicles not yet rated by Kelly Blue Book.</p>')
+		}
+		
+		$(document).ready(function (){
+			show_results(vehiclesDB);
+			
+			$('#filter').click(function(){
+				$('#results').empty()
+				var filtered_vehicles = [];
+				//get filter values
+				var set_range = $('#set-range').val();
+				var min_price = $('#min-price').val();
+				var max_price = $('#max-price').val();
+				
+				//filter DB by range
+				for(var i=0; i<vehiclesDB.length; i++){
+					if (vehiclesDB[i][7] >= set_range && vehiclesDB[i][5] >= min_price && vehiclesDB[i][5] <= max_price){
+						filtered_vehicles.push(vehiclesDB[i]);						
+					}
+				}
+				
+				console.log(max_price);
+				show_results(filtered_vehicles);
+			});
+			
+			$('#clear').click(function(){
+				location.reload();
+			});
+		});
+	</script>
 </html>
